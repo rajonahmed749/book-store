@@ -7,15 +7,25 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Login from './Components/Shared/Login/Login';
+import Navbar from './Components/Shared/Navbar/Navbar';
+import Admin from './Components/Admin/Admin/Admin';
 
 function App() {
   return (
     <div>
     
      <Router>
+       <Navbar/>
         <Switch>
           <Route exact path="/">
            <Home/>
+          </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/admin">
+            <Admin/>
           </Route>
         </Switch>
     </Router>
