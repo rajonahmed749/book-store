@@ -24,7 +24,7 @@ const Navbar = () => {
                         <Link class="nav-link me-4 fw-bold" aria-current="page" to="/admin">Admin</Link>
                         </li>
                         <li class="nav-item">
-                        <Link class="nav-link  me-4 fw-bold" aria-current="page" to="/login">Login</Link>
+                        <Link class="nav-link btn btn-outline-info me-4 fw-bold" aria-current="page" to="/login">Login</Link>
                         </li>
                     </ul>
              </div>
