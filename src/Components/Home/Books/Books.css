@@ -1,0 +1,18 @@
+.book{
+    /* width: 500px;
+    height: 550px; */
+    border: 1px solid gray;
+    border-radius: 14px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    overflow: hidden;
+}
+.book button{
+    margin-top: 20px;
+    border: none;
+    border-radius: 15px;
+    background: rgb(106, 194, 216);
+    color: white
+
+}

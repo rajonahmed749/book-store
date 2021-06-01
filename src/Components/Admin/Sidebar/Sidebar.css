@@ -1,3 +1,18 @@
 .unlist{
     list-style-type: none;
 }
+.sidebar{
+    background-image: linear-gradient(40deg,#273c75,#38ada9, #19d3ae,#0fcfec,#487eb0);
+    position: fixed;
+}
+.sidebar li{
+    margin-bottom: 2em;
+}
+.sidebar li:hover span{
+    display: inline-block;
+    transform: translate(5px);
+}
+.sidebar svg{
+    margin-right: 5px;
+    color: #000000;
+}

@@ -1,38 +1,42 @@
 import React from 'react';
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent ,Menu, MenuItem} from 'react-pro-sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSteamSquare } from '@fortawesome/free-brands-svg-icons';
-import { faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faPlusSquare,faEdit, faSignOutAlt, faCalendar, faGripHorizontal, faUsers ,faUserPlus, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import "./Sidebar.css"
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 const Sidebar = () => {
+    const { url } = useRouteMatch()
     return (
-        <ProSidebar className="sidebar-height mt-5 bg-secondary bg-gradient rounded-pill ">
-            <SidebarHeader>
-                <h3 className="text-center">BOOK STORE</h3>
-            </SidebarHeader>
-            <SidebarContent>
-                <Menu iconShape="square">               
-                    <MenuItem  className="unlist pe-2" icon={<FontAwesomeIcon icon={faSteamSquare} color="green"  size="2x" />}>
-                        <span className="text-light"> Manage Books</span> 
-                        {/* <Link to={`${url}/manage-books`} /> */}
-                    </MenuItem>
-                    <MenuItem className="unlist" icon={<FontAwesomeIcon icon={faPlusSquare} size="2x" />}>
-                        Add Books
-                        {/* <Link to={`${url}/add-books`} /> */}
-                     </MenuItem>
-                        <MenuItem className="unlist" icon={<FontAwesomeIcon icon={faEdit} size="2x" />}>
-                            Edit Books
-                            {/* <Link to={`${url}/edit-books/noValidId`} /> */}
-                        </MenuItem>
-                </Menu>
-            </SidebarContent>
-            <SidebarFooter>
-                <p className="text-center">© 2021  All Rights Reserved</p>
-                {/* <Button as={Link} to="/" variant="outline-light">Back to Home</Button> */}
-            </SidebarFooter>
-        </ProSidebar>
+        <div className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4" style={{height:"100vh"}}>
+            <ul className="list-unstyled">
+                <li>
+                    <Link to="/doctor/dashboard" className="text-white text-decoration-none">
+                        <FontAwesomeIcon icon={faFileAlt} /> <span>Manage Books</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to={`${url}/add-books`} className="text-white text-decoration-none">
+                        <FontAwesomeIcon icon={faPlusSquare} /> <span>Add Books</span> 
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/doctor/patients" className="text-white text-decoration-none">
+                        <FontAwesomeIcon icon={faEdit} /> <span>Edits Books</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/admin" className="text-white text-decoration-none" >
+                      <FontAwesomeIcon icon={faCog} /> <span>Setting</span>
+                    </Link>
+                </li>
+            </ul>
+            <div>
+                <Link to="/" className="text-white text-decoration-none">
+                    <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
+                </Link>
+            </div>
+        </div>
     );
 };
 

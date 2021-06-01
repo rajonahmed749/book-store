@@ -1,0 +1,6 @@
+.tron-body {
+    overflow: scroll;
+    height: 500px;
+    overflow-x: hidden;
+  }
+  
