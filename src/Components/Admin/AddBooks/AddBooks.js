@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
+import { UserContext } from '../../../App';
 import "./AddBooks.css";
 const axios = require('axios');
 
 const AddBooks = () => {
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();    
     const [imageURL, setImgURL] = useState ({});
+
+    const [books, setBooks] = useContext(UserContext);
 
     const onSubmit = data =>{
         console.log("first data", data)
@@ -15,6 +19,7 @@ const AddBooks = () => {
             price : data.price,
             imageURL : imageURL
         }
+        setBooks(bookData)
         // const { bookName, authorName, price } = data;
         const url = `http://localhost:4000/addBook`;
 
@@ -27,6 +32,7 @@ const AddBooks = () => {
             })            
             .then(res => {
             console.log('Server side response', res);
+            alert("this Book addedd sucessfully");
             })
             .catch((error) => {
             console.error('Error:', error);

@@ -10,8 +10,10 @@ import Navbar from './Components/Shared/Navbar/Navbar';
 import Admin from './Components/Admin/Admin/Admin';
 import Nofound from './Components/Home/Nofound/Nofound';
 import { createContext, useState } from 'react';
+import Checkout from './Components/Home/Checkout/Checkout';
 export const UserContext = createContext() 
 function App() {
+  
   const [loggedInUser, setLoggedInUser] = useState ([])
   return (
     <div>
@@ -21,6 +23,9 @@ function App() {
           <Switch>
             <Route exact path="/">
             <Home/>
+            </Route>
+            <Route path="/checkout/:id">
+              <Checkout/>
             </Route>
             <Route path="/login">
               <Login/>

@@ -11,7 +11,7 @@ const Sidebar = () => {
         <div className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4" style={{height:"100vh"}}>
             <ul className="list-unstyled">
                 <li>
-                    <Link to="/doctor/dashboard" className="text-white text-decoration-none">
+                    <Link to={`${url}/manage-books`} className="text-white text-decoration-none">
                         <FontAwesomeIcon icon={faFileAlt} /> <span>Manage Books</span>
                     </Link>
                 </li>
@@ -21,7 +21,7 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/doctor/patients" className="text-white text-decoration-none">
+                    <Link to={`${url}/edit-books/:editId`} className="text-white text-decoration-none">
                         <FontAwesomeIcon icon={faEdit} /> <span>Edits Books</span>
                     </Link>
                 </li>
