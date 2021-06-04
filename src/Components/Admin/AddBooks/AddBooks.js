@@ -31,14 +31,11 @@ const AddBooks = () => {
             body: JSON.stringify(bookData),
             })            
             .then(res => {
-            console.log('Server side response', res);
-            alert("this Book addedd sucessfully");
+                alert("this Book addedd sucessfully");
             })
             .catch((error) => {
             console.error('Error:', error);
             });
-
-         console.log(bookData)
         };
 
     const handleImage = e => {

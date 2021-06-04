@@ -7,12 +7,17 @@ const Home = () =>{
     useEffect(() => {
         fetch("http://localhost:4000/allBooks")
         .then(res => res.json())
-        .then(data => setBooks(data))
+        .then(data => {
+            setBooks(data)
+            if(data){
+                document.getElementById('spinner').style.display= 'none'
+            }
+        })
     }, [])
     return (
         <div>
             <h3 className="text-center mt-5 text-danger">{books.length}</h3>
-            <div className="spinner-border text-info text-center" id="spinner" ></div>
+            <div className="spinner-border text-info text-center" id="spinner"></div>
             <div className="row">
                 {
                     books.map(book => <Books key={book._id} book={book}></Books> )

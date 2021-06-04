@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 const Checkout = () => {
     const [book, setBook] = useState({})
@@ -9,9 +9,21 @@ const Checkout = () => {
     .then(res => res.json())
     .then(data => setBook(data))
     
-    // console.log(book);
+    const history = useHistory()
+    //order book
+   const handleOrder = () => {
+       const order = [book]
+       console.log("this book is orderd",order[0]);
+        fetch(`http://localhost/addOrder`,{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(order[0])
+            })
+            .then(res => res.json())
+            history.push('/orders')
+   }
 
-    // console.log("this is checkout book",book);
+
     return (
         <div>
         <h1>Checkout Your Book</h1>
@@ -35,8 +47,7 @@ const Checkout = () => {
                     <td>{book.bookName}</td>
                     <td>{book.authorName}</td>
                     <td>{book.price}</td>
-                    <td>{book.price}</td>
-                    {/* <td className="btn btn-primary" onClick={handleOrder}>Confirm Order</td> */}
+                    <td className="btn btn-primary text-dark" onClick={handleOrder}>Confirm Order</td>
                 </tr>
             </tbody>
         </table>

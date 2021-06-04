@@ -11,10 +11,12 @@ import Admin from './Components/Admin/Admin/Admin';
 import Nofound from './Components/Home/Nofound/Nofound';
 import { createContext, useState } from 'react';
 import Checkout from './Components/Home/Checkout/Checkout';
+import Orders from './Components/Home/Orders/Orders';
+import PrivateRoute from './Components/Home/PrivateRoute/PrivateRoute';
 export const UserContext = createContext() 
 function App() {
   
-  const [loggedInUser, setLoggedInUser] = useState ([])
+  const [loggedInUser, setLoggedInUser] = useState ({})
   return (
     <div>
     <UserContext.Provider value ={[loggedInUser, setLoggedInUser]}>
@@ -24,15 +26,18 @@ function App() {
             <Route exact path="/">
             <Home/>
             </Route>
-            <Route path="/checkout/:id">
+            <PrivateRoute path="/checkout/:id">
               <Checkout/>
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute path="/orders">
+              <Orders/>
+            </PrivateRoute>
             <Route path="/login">
               <Login/>
             </Route>
-            <Route path="/admin">
+            <PrivateRoute path="/admin">
               <Admin/>
-            </Route>
+            </PrivateRoute>
             <Route path="*">
               <Nofound/>
             </Route>
