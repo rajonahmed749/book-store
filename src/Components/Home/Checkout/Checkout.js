@@ -5,7 +5,7 @@ const Checkout = () => {
     const [book, setBook] = useState({})
     const {id} = useParams();
 
-    fetch(`http://localhost:4000/book/${id}`)
+    fetch(`https://still-savannah-11670.herokuapp.com/book/${id}`)
     .then(res => res.json())
     .then(data => setBook(data))
     

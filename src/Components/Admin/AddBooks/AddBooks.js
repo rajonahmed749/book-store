@@ -21,7 +21,7 @@ const AddBooks = () => {
         }
         setBooks(bookData)
         // const { bookName, authorName, price } = data;
-        const url = `http://localhost:4000/addBook`;
+        const url = `https://still-savannah-11670.herokuapp.com/addBook`;
 
         fetch(url, {
             method: 'POST',

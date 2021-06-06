@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const Orders = () => {
     const [orders, setOrders] = useState([])
-    const url = `http://localhost:4000/allOrder`
+    const url = `https://still-savannah-11670.herokuapp.com/allOrder`
     fetch(url)
     .then(res => res.json())
     .then(data => {
