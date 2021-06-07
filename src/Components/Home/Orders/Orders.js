@@ -7,47 +7,47 @@ const Orders = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
 
-    const [allOrders, setAlOrders] = useState([])
-    
-
+    let [allOrders, setAlOrders] = useState([])
+        if(!loggedInUser.name){
+            allOrders=[]
+        }
+    console.log(allOrders);
     useEffect(() => {
-        fetch(`http://localhost:4000/allOrder`)
+        fetch(`https://still-savannah-11670.herokuapp.com/allOrder`)
           .then(res => res.json())
           .then(data => setAlOrders(data))
       }, [loggedInUser.email])
 
 
     return (
-        <div>
-            <h3>You have: {allOrders.length} Orders</h3>
-            <div>
-                <table class="table table-hover">
+        <div className="text-center mt-4">
+            <div className="text-center mt-4">
+                <h3 className="textColor">Dear {loggedInUser.name}</h3>
+                <h3>You've purchased {allOrders.length} book(s)</h3>
+            </div>
+            <div className=" mt-4">
+                <table class="table table-hover">    
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col"></th>
+                        <th scope="col">Book Name</th>
+                        <th scope="col">Author Name</th>
+                        <th scope="col">Price</th>
                         </tr>
-                    </thead>
+                    </thead>                
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                    {
+                         allOrders?.map(info => {
+                        return (
+                        <tr key={info._id}>
+                            <td> <img src={info.imageURL} alt="books" style={{ width: "50px" }} /> </td>
+                            <td>{info.bookName}</td>
+                            <td>{info.authorName}</td>
+                            <td>${info.price}</td>
                         </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                        )
+                        })
+                    }
                     </tbody>
                 </table>
             </div>           
