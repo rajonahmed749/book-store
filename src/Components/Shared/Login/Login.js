@@ -40,13 +40,10 @@ const Login = () => {
     }
 
 
-
     return (
         <div className="text-center">
-            <h4 className="mt-5">this is login page</h4>
-            {/* <Button onClick={handleGoogle} variant="outline-dark"><FontAwesomeIcon icon={faGoogle} size="2x" /></Button> */}
-            <button onClick={handleGoogle} type="button" className="btn  btn-outline-secondary"><FontAwesomeIcon icon={faGoogle} size="1x" /></button>
-            
+            <h4 className="mt-5">Login to go further.</h4>            
+            <button onClick={handleGoogle} type="button" className="btn  btn-outline-secondary mt-2"><FontAwesomeIcon icon={faGoogle} size="1x" /> Sign in</button>            
         </div>
     );
 };

@@ -1,38 +1,56 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
+import { UserContext } from '../../../App';
+
+
 
 const Orders = () => {
-    const [orders, setOrders] = useState([])
-    const url = `https://still-savannah-11670.herokuapp.com/allOrder`
-    fetch(url)
-    .then(res => res.json())
-    .then(data => {
-        setOrders(data);
-        // console.log('orders', data);
-    })
+
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+
+    const [allOrders, setAlOrders] = useState([])
+    
+
+    useEffect(() => {
+        fetch(`http://localhost:4000/allOrder`)
+          .then(res => res.json())
+          .then(data => setAlOrders(data))
+      }, [loggedInUser.email])
+
+
     return (
         <div>
-            <h3>You have: {orders.length} Orders</h3>
-            <div className="table-container">
-            <table className="order-table table">
-            {
-                orders.map(book =>
-                // <thead key={book._id}>
-                <thead>
-                    <tr>
-                        {/* <td>MR X</td>
-                        <td>{book.name}</td>
-                        <td>{book.autor}</td>
-                        <td>{book.price}</td> */}
-                        <td>MR X</td>
-                        <td>X book</td>
-                        <td>MR. Author</td>
-                        <td>$77</td>
-                    </tr>
-                </thead>
-                )
-            }
-            </table>
-            </div>
+            <h3>You have: {allOrders.length} Orders</h3>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>           
         </div>
     );
 };

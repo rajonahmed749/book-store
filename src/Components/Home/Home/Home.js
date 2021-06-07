@@ -16,8 +16,10 @@ const Home = () =>{
     }, [])
     return (
         <div>
-            
-            <div className="spinner-border text-info mx-auto" id="spinner"></div>
+            <div className="text-center mt-5">
+                <h3>Welcome to BOOK STORE</h3>
+            </div>            
+            <div className="spinner-border text-info mt-4" id="spinner"></div>
             <div className="row">
                 {
                     books.map(book => <Books key={book._id} book={book}></Books> )
