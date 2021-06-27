@@ -2,35 +2,28 @@ import React, { useContext, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const Checkout = () => {
-
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [book, setBook] = useState({})
-    const {id} = useParams();
+    const { id } = useParams();
 
     fetch(`https://still-savannah-11670.herokuapp.com/book/${id}`)
-    .then(res => res.json())
-    .then(data => setBook(data))
-    
+        .then(res => res.json())
+        .then(data => setBook(data))
+
     const history = useHistory()
 
-    // console.log("this is order",book);
-    //order book
-   const handleOrder = () => {
-
-        fetch(`https://still-savannah-11670.herokuapp.com/addOrder`,{
+    const handleOrder = () => {
+        fetch(`https://still-savannah-11670.herokuapp.com/addOrder`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(book)
-            })
+        })
             .then(res => res.json())
-            history.push('/orders')
-   }
-
-
+        history.push('/orders')
+    }
 
     return (
         <div className="text-center">
@@ -52,7 +45,6 @@ const Checkout = () => {
                     <tbody>
                         <tr>
                             <td>{loggedInUser.name}</td>
-                            
                             <td>{book.bookName}</td>
                             <td>{book.authorName}</td>
                             <td>${book.price}</td>

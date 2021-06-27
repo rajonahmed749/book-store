@@ -13,38 +13,37 @@ import { createContext, useState } from 'react';
 import Checkout from './Components/Home/Checkout/Checkout';
 import Orders from './Components/Home/Orders/Orders';
 import PrivateRoute from './Components/Home/PrivateRoute/PrivateRoute';
-export const UserContext = createContext() 
+export const UserContext = createContext()
 function App() {
-  
-  const [loggedInUser, setLoggedInUser] = useState ({})
+
+  const [loggedInUser, setLoggedInUser] = useState({})
   return (
     <div>
-    <UserContext.Provider value ={[loggedInUser, setLoggedInUser]}>
-      <Router>
-        <Navbar/>
+      <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+        <Router>
+          <Navbar />
           <Switch>
             <Route exact path="/">
-            <Home/>
+              <Home />
             </Route>
             <PrivateRoute path="/checkout/:id">
-              <Checkout/>
+              <Checkout />
             </PrivateRoute>
             <PrivateRoute path="/orders">
-              <Orders/>
+              <Orders />
             </PrivateRoute>
-            
             <Route path="/login">
-              <Login/>
+              <Login />
             </Route>
             <PrivateRoute path="/admin">
-              <Admin/>
+              <Admin />
             </PrivateRoute>
             <Route path="*">
-              <Nofound/>
+              <Nofound />
             </Route>
           </Switch>
-      </Router>
-    </UserContext.Provider>
+        </Router>
+      </UserContext.Provider>
     </div>
   );
 }
